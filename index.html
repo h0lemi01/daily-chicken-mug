@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Daily Quote</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Here is your quote for today:</p>
+        <img id="quoteImage" src="" alt="Daily Quote">
+    </div>
+
+    <script>
+        
+        // --- EDIT YOUR CHICKEN QUOTES HERE ---
+        const quoteCalendar = {
+            
+            // This is your fallback image
+            "default": "default.png", 
+
+            // --- 30 DAY CALENDAR (Images 1-30) ---
+            "11-04": "1.png",
+            "11-05": "2.png",
+            "11-06": "3.png",
+            "11-07": "4.png",
+            "11-08": "5.png",
+            "11-09": "6.png",
+            "11-10": "7.png",
+            "11-11": "8.png",
+            "11-12": "9.png",
+            "11-13": "10.png",
+            "11-14": "11.png",
+            "11-15": "12.png",
+            "11-16": "13.png",
+            "11-17": "14.png",
+            "11-18": "15.png",
+            "11-19": "16.png",
+            "11-20": "17.png",
+            "11-21": "18.png",
+            "11-22": "19.png",
+            "11-23": "20.png",
+            "11-24": "21.png",
+            "11-25": "22.png",
+            "11-26": "23.png",
+            "11-27": "24.png",
+            "11-28": "25.png",
+            "11-29": "26.png",
+            "11-30": "27.png",
+            "12-01": "28.png",
+            "12-02": "29.png",
+            "12-03": "30.png" // No comma on the last one!
+        };
+        
+        // --- STOP EDITING HERE ---
+        
+        function getTodaysKey() {
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${month}-${day}`;
+        }
+
+        const todayKey = getTodaysKey(); 
+        const imageFile = quoteCalendar[todayKey] || quoteCalendar["default"];
+        const imageElement = document.getElementById("quoteImage");
+        imageElement.src = imageFile;
+
+    </script> 
+</body>
+</html>
